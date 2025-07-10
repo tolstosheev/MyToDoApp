@@ -1,5 +1,6 @@
 @use '../mixins/fonts' as font-mix;
 @use '../mixins/adaptive' as adaptive;
+@use '../mixins/header-container' as container;
 
 :root {
   --opacity: 0;
@@ -26,9 +27,7 @@
   &__container {
     display: grid;
     grid-template-rows: repeat(2, 1fr);
-    padding: 22px;
-    background-color: #f6f6f6;
-    border-radius: 17px;
+    @include container.header-container;
 
     &:hover{
       --opacity: 1;
