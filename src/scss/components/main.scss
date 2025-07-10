@@ -1,0 +1,10 @@
+@use '../mixins/adaptive' as adaptive;
+
+.main{
+  padding: 28px 20px;
+  font-family: "Rubik", sans-serif;
+
+  @include adaptive.phones{
+    padding: 28px 10px;
+  }
+}

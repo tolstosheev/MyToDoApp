@@ -1,0 +1,27 @@
+@use '../maps/fonts_map' as fonts;
+@use "sass:map";
+
+@mixin font-style($font-style, $font-size) {
+
+  @if map.has-key(fonts.$fonts, $font-style) {
+    $style-properties: map.get(fonts.$fonts, $font-style);
+
+
+    color: map.get($style-properties, "color");
+    font-weight: map.get($style-properties, "font-weight");
+    line-height: map.get($style-properties, "line-height");
+    letter-spacing: map.get($style-properties, "letter-spacing");
+
+    font-size: $font-size;
+  } @else {
+    @error "Стиль '#{$font-style}' не найден в карте $fonts";
+  }
+}
+
+@mixin on-rubik-medium-black-font($font-size) {
+  @include font-style("Rubik-medium-black", $font-size);
+}
+
+@mixin on-rubik-regular-font($font-size) {
+  @include font-style("Rubik-regular", $font-size);
+}
