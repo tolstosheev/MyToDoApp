@@ -1,3 +1,13 @@
 @use "scss/reset";
 @use "scss/components/header";
 @use "scss/components/main";
+@use 'scss/mixins/adaptive' as adaptive;
+
+body {
+  padding: 28px 20px;
+  font-family: "Rubik", sans-serif;
+
+  @include adaptive.phones{
+    padding: 28px 10px;
+  }
+}

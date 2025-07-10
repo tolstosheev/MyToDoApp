@@ -31,10 +31,6 @@
 
     @include container.header-container;
 
-    @include adaptive.phones{
-      padding: 10px;
-    }
-
     &__item{
       @include font-mix.on-rubik-medium-black-font(36px);
 
@@ -50,10 +46,6 @@
 
   &__description{
     @include container.header-container;
-
-    @include adaptive.phones{
-      padding: 10px;
-    }
 
     @include adaptive.tablets{
       grid-row: 2;
@@ -71,10 +63,6 @@
     row-gap: 8px;
 
     @include container.header-container;
-
-    @include adaptive.phones{
-      padding: 10px;
-    }
 
     &__item{
       display: grid;
