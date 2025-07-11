@@ -22,6 +22,14 @@
   @include font-style("Rubik-medium-black", $font-size);
 }
 
-@mixin on-rubik-regular-font($font-size) {
-  @include font-style("Rubik-regular", $font-size);
+@mixin on-rubik-medium-grey-font($font-size) {
+  @include font-style("Rubik-medium-grey", $font-size);
+}
+
+@mixin on-rubik-regular-black-font($font-size) {
+  @include font-style("Rubik-regular-black", $font-size);
+}
+
+@mixin on-rubik-regular-white-font($font-size) {
+  @include font-style("Rubik-regular-white", $font-size);
 }

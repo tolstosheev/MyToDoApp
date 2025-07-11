@@ -4,7 +4,7 @@
   padding: 22px;
   background-color: #f6f6f6;
   border-radius: 17px;
-  @include adaptive.phones{
+  @include adaptive.tablets{
     padding: 10px;
   }
 }
