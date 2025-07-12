@@ -18,15 +18,15 @@
         <section class="header__info">
           <div class="header__info__item">
             <span class="header__info__item__title">All tasks:</span>
-            <span class="header__info__item__content">6</span>
+            <span class="header__info__item__content" data-todo-info>7</span>
           </div>
           <div class="header__info__item">
             <span class="header__info__item__title">Done:</span>
-            <span class="header__info__item__content">6</span>
+            <span class="header__info__item__content" data-todo-info>7</span>
           </div>
           <div class="header__info__item">
             <span class="header__info__item__title">Frozen:</span>
-            <span class="header__info__item__content">6</span>
+            <span class="header__info__item__content" data-todo-info>7</span>
           </div>
         </section>
       </header>
@@ -35,7 +35,7 @@
           <div class="main__container__header">
             <h4 class="main__container__header__title">To do</h4>
             <div class="main__container__header__button">
-              <button>+</button>
+              <button id="ToDoBtn" data-todo-add-btn>+</button>
             </div>
           </div>
           <div class="main__container__content" id="ToDo">
@@ -46,7 +46,7 @@
           <div class="main__container__header">
             <h4 class="main__container__header__title">In progress</h4>
             <div class="main__container__header__button">
-              <button>+</button>
+              <button id="InProgressBtn" data-todo-add-btn>+</button>
             </div>
           </div>
           <div class="main__container__content" id="InProgress">
@@ -57,7 +57,7 @@
           <div class="main__container__header">
             <h4 class="main__container__header__title">Closed</h4>
             <div class="main__container__header__button">
-              <button>+</button>
+              <button id="ClosedBtn" data-todo-add-btn>+</button>
             </div>
           </div>
           <div class="main__container__content" id="Closed">
@@ -68,7 +68,7 @@
           <div class="main__container__header">
             <h4 class="main__container__header__title">Frozen</h4>
             <div class="main__container__header__button">
-              <button>+</button>
+              <button id="FrozenBtn" data-todo-add-btn>+</button>
             </div>
           </div>
           <div class="main__container__content" id="Frozen">
@@ -96,5 +96,33 @@
           </div>
         </div>
       </template>
+      <div class="form--close" data-form-todo>
+        <form class="form__addtodo">
+          <header class="form__addtodo__header">
+            <h4 class="form__addtodo__header__title">Add your task</h4>
+          </header>
+          <section class="form__addtodo__container">
+            <div class="form__addtodo__container__title">
+              <span class="form__addtodo__container__title__text">Title</span>
+              <input class="form__addtodo__container__title__input" type="text" name="title" placeholder="Title"  required data-form-title-input/>
+            </div>
+            <div class="form__addtodo__container__level">
+              <span class="form__addtodo__container__title__text">Level</span>
+              <select class="form__addtodo__container__level__select" name="Level" data-form-level-select>
+                <option class="form__addtodo__container__level__select__option" value="Low">Low</option>
+                <option class="form__addtodo__container__level__select__option" value="Medium">Medium</option>
+                <option class="form__addtodo__container__level__select__option" value="High">High</option>
+              </select>
+            </div>
+            <div class="form__addtodo__container__participant">
+              <span class="form__addtodo__container__participant__text">Participant</span>
+              <input class="form__addtodo__container__participant__input" type="text" name="participant" placeholder="Participant" required data-form-participant-input/>
+            </div>
+            <div class="form__addtodo__container__button">
+              <button class="form__addtodo__container__button__item" data-form-add-button>Add ToDo</button>
+            </div>
+          </section>
+        </form>
+      </div>
   </body>
 </html>

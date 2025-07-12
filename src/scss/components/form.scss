@@ -1,0 +1,126 @@
+@use '../mixins/fonts' as font-mix;
+@use '../mixins/input' as input;
+@use '../mixins/adaptive' as adaptive;
+
+:root {
+  --visible: grid;
+}
+
+.form {
+  display: var(--visible);
+  place-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(5px);
+
+  &--close{
+    --visible: none;
+  }
+
+  &__addtodo {
+    display: var(--visible);
+    grid-template-columns: minmax(320px, 500px);
+    grid-template-rows: min-content 1fr;
+    gap: 50px;
+    height: 700px;
+    z-index: 2222;
+    background-color: #f6f6f6;
+    border-radius: 20px;
+    padding: 30px;
+
+    @include adaptive.tablets{
+      padding: 30px 10px;
+    }
+
+    &__header {
+      display: grid;
+      place-items: center;
+      text-align: center;
+
+      &__title {
+        @include font-mix.on-rubik-medium-black-font(30px)
+      }
+    }
+
+    &__container {
+      display: grid;
+      grid-template-rows: repeat(4, 1fr);
+      gap: 20px;
+
+      &__title {
+        display: grid;
+        grid-template-rows: repeat(2, 1fr);
+        align-items: center;
+
+        &__text {
+          @include font-mix.on-rubik-medium-black-font(20px)
+        }
+
+        &__input {
+          @include input.on-input;
+        }
+      }
+
+      &__level {
+        display: grid;
+        grid-template-rows: repeat(2, 1fr);
+        align-items: center;
+
+        &__text {
+          @include font-mix.on-rubik-medium-black-font(20px)
+        }
+
+        &__select {
+          -webkit-appearance: none;
+          @include input.on-input;
+
+          &:focus, &:hover, &:active {
+            outline: none;
+          }
+
+
+          &::-ms-expand {
+            display: none;
+          }
+
+          &__option {
+
+          }
+        }
+      }
+
+      &__participant {
+        display: grid;
+        grid-template-rows: repeat(2, 1fr);
+        align-items: center;
+
+        &__text {
+          @include font-mix.on-rubik-medium-black-font(20px)
+        }
+
+        &__input {
+          @include input.on-input;
+        }
+      }
+
+      &__button {
+        display: grid;
+        place-items: center;
+
+        &__item {
+          @include font-mix.on-rubik-regular-white-font(20px);
+          background-color: #67cb65;
+          border-radius: 20px;
+          text-transform: uppercase;
+          width: 100%;
+          height: 50px;
+        }
+      }
+    }
+  }
+}

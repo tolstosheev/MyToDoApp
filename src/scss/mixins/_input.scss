@@ -1,0 +1,12 @@
+@use 'fonts' as font-mix;
+
+@mixin on-input {
+  background-color: #E0E4EA;
+  height: 50px;
+  border-radius: 20px;
+  padding: 0 15px;
+  @include font-mix.on-rubik-medium-grey-font(16px);
+  &::placeholder{
+    @include font-mix.on-rubik-medium-grey-font(16px)
+  }
+}

@@ -1,6 +1,7 @@
 import {Dom} from './Dom.js';
 import {Storage} from './Storage';
 import {ToDoItem} from './ToDoItem';
+import {Form} from './Form';
 
 export class ToDoApp {
 
@@ -13,7 +14,11 @@ export class ToDoApp {
         this.toDoContainerInProgres = this.dom.query('#InProgress');
         this.toDoContainerFrozen = this.dom.query('#Frozen');
         this.toDoContainerClosed = this.dom.query('#Closed');
+        this.toDoAddBtns = this.dom.queryAll('[data-todo-add-btn]');
+        this.addFormToDo = new Form('[data-form-todo]', 'form')
+
         this.render(this.toDoList);
+        this.bindEvents();
     }
 
     createTodoItemLayout(todo) {
@@ -44,9 +49,51 @@ export class ToDoApp {
         return todoElement;
     }
 
+    getInfo(){
+        const tasks = this.dom.queryAll('[data-todo-info');
+
+        tasks[0].textContent = this.toDoList.length;
+        tasks[1].textContent =  this.toDoList.reduce((acc, el) => {
+            if (el.container === 'Closed'){
+                acc++;
+            }
+            return acc;
+        }, 0);
+        tasks[2].textContent =  this.toDoList.reduce((acc, el) => {
+            if (el.container === 'Frozen'){
+                acc++;
+            }
+            return acc;
+        }, 0);
+    }
+
     clearContainer(container, selector='[data-todo-item]') {
         let allElements = container.querySelectorAll(selector);
         allElements.forEach((element) => element.remove());
+    }
+
+    bindEvents() {
+        this.toDoAddBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                this.addFormToDo.open();
+                const container = String(btn.id).slice(0, btn.id.length-3);
+                this.addFormToDo.setOnSubmit((formData) => {
+                    if (formData) {
+                        this.addToDo(formData, container);
+                        this.addFormToDo.setOnSubmit(null);
+                    }
+                })
+            })
+        })
+    }
+
+    addToDo(formData, container) {
+        const [title, level, participant] = formData;
+        const newTodoItem = new ToDoItem(title, level, participant, container);
+
+        this.toDoList.push(newTodoItem);
+        this.localStorage.set(this.toDoList);
+        this.render(this.toDoList);
     }
 
     render(todoList) {
@@ -54,7 +101,7 @@ export class ToDoApp {
         this.clearContainer(this.toDoContainerClosed);
         this.clearContainer(this.toDoContainerInProgres);
         this.clearContainer(this.toDoContainerFrozen);
-
+        this.getInfo()
         todoList.forEach(todo => {
             const toDoItem = this.createTodoItemLayout(todo);
             switch (todo.container) {
