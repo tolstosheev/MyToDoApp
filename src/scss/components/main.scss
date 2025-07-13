@@ -58,6 +58,7 @@
         justify-content: end;
         align-items: center;
 
+
         button {
           opacity: var(--opacity);
           transition: opacity .25s ease;
@@ -67,6 +68,11 @@
           border-radius: 15px;
           color: #ffffff;
           text-align: center;
+        }
+        &--remove{
+          button {
+            background-color: #e74444;
+          }
         }
       }
     }

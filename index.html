@@ -31,53 +31,47 @@
         </section>
       </header>
       <main class="main">
-        <section class="main__container" >
+        <section class="main__container" data-container>
           <div class="main__container__header">
             <h4 class="main__container__header__title">To do</h4>
             <div class="main__container__header__button">
-              <button id="ToDoBtn" data-todo-add-btn>+</button>
+              <button data-todo-add-btn>+</button>
             </div>
           </div>
-          <div class="main__container__content" id="ToDo">
+          <div class="main__container__content" id="ToDo" data-todo-container>
 
           </div>
         </section>
-        <section class="main__container">
+        <section class="main__container" data-container>
           <div class="main__container__header">
             <h4 class="main__container__header__title">In progress</h4>
-            <div class="main__container__header__button">
-              <button id="InProgressBtn" data-todo-add-btn>+</button>
-            </div>
           </div>
-          <div class="main__container__content" id="InProgress">
+          <div class="main__container__content" id="InProgress" data-todo-container>
 
           </div>
         </section>
-        <section class="main__container" >
+        <section class="main__container" data-container>
           <div class="main__container__header">
             <h4 class="main__container__header__title">Closed</h4>
-            <div class="main__container__header__button">
-              <button id="ClosedBtn" data-todo-add-btn>+</button>
+            <div class="main__container__header__button main__container__header__button--remove">
+              <button data-todo-remove-btn>-</button>
             </div>
           </div>
-          <div class="main__container__content" id="Closed">
+          <div class="main__container__content" id="Closed" data-todo-container>
 
           </div>
         </section>
-        <section class="main__container">
+        <section class="main__container" data-container>
           <div class="main__container__header">
             <h4 class="main__container__header__title">Frozen</h4>
-            <div class="main__container__header__button">
-              <button id="FrozenBtn" data-todo-add-btn>+</button>
-            </div>
           </div>
-          <div class="main__container__content" id="Frozen">
+          <div class="main__container__content" id="Frozen" data-todo-container>
 
           </div>
         </section>
       </main>
       <template data-todo-template>
-        <div class="main__container__content__item" data-todo-item>
+        <div class="main__container__content__item" draggable="true" data-todo-item>
           <div class="main__container__content__item__header">
             <h4 class="main__container__content__item__header__title" data-todo-title>CRM sytem design</h4>
             <div class="main__container__content__item__header__level">

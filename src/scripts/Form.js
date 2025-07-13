@@ -6,7 +6,8 @@ export class Form {
         this.titleInput = document.querySelector('[data-form-title-input]');
         this.participantInput = document.querySelector('[data-form-participant-input]');
         this.levelSelect = document.querySelector('[data-form-level-select]');
-        this.addBtn = document.querySelector('[data-form-add-button]');
+        this.addToDoBtn = document.querySelector('[data-form-add-button]');
+
         this.level = '';
         this.title = '';
         this.participant = '';
@@ -32,7 +33,7 @@ export class Form {
     }
 
     bindEvents() {
-        this.addBtn.addEventListener('click', () => {
+        this.addToDoBtn.addEventListener('click', () => {
             this.level = this.levelSelect.value;
             this.title = this.titleInput.value.trim();
             this.participant = this.participantInput.value.trim();
@@ -40,7 +41,20 @@ export class Form {
             if (this.onSubmitCallBack) {
                 this.onSubmitCallBack(this.get());
             }
-        })
-    }
+        });
 
+        this.addToDoBtn.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                this.level = this.levelSelect.value;
+                this.title = this.titleInput.value.trim();
+                this.participant = this.participantInput.value.trim();
+
+                if (this.onSubmitCallBack) {
+                    this.onSubmitCallBack(this.get());
+                }
+            }
+        })
+
+
+    }
 }

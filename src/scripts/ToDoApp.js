@@ -2,6 +2,7 @@ import {Dom} from './Dom.js';
 import {Storage} from './Storage';
 import {ToDoItem} from './ToDoItem';
 import {Form} from './Form';
+import {DragDrop} from './DragDrop';
 
 export class ToDoApp {
 
@@ -14,15 +15,21 @@ export class ToDoApp {
         this.toDoContainerInProgres = this.dom.query('#InProgress');
         this.toDoContainerFrozen = this.dom.query('#Frozen');
         this.toDoContainerClosed = this.dom.query('#Closed');
-        this.toDoAddBtns = this.dom.queryAll('[data-todo-add-btn]');
+        this.toDoAddBtn = this.dom.query('[data-todo-add-btn]');
+        this.toDoRemoveBtn = this.dom.query('[data-todo-remove-btn]');
         this.addFormToDo = new Form('[data-form-todo]', 'form')
 
         this.render(this.toDoList);
+        new DragDrop('[data-todo-item]', '[data-todo-container]', '[data-container]', this.handleDrop.bind(this));
+
         this.bindEvents();
     }
 
     createTodoItemLayout(todo) {
         const todoElement = document.importNode(this.toDoTemplate.content, true);
+
+        const todoItem = todoElement.querySelector('[data-todo-item]');
+        todoItem.id = todo.id;
 
         const todoElementTitle = todoElement.querySelector('[data-todo-title]');
         todoElementTitle.textContent = todo.text;
@@ -73,27 +80,43 @@ export class ToDoApp {
     }
 
     bindEvents() {
-        this.toDoAddBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                this.addFormToDo.open();
-                const container = String(btn.id).slice(0, btn.id.length-3);
-                this.addFormToDo.setOnSubmit((formData) => {
-                    if (formData) {
-                        this.addToDo(formData, container);
-                        this.addFormToDo.setOnSubmit(null);
-                    }
-                })
+        this.toDoAddBtn.addEventListener('click', () => {
+            this.addFormToDo.open();
+            this.addFormToDo.setOnSubmit((formData) => {
+                if (formData) {
+                    this.addToDo(formData);
+                    this.addFormToDo.setOnSubmit(null);
+                }
             })
+        });
+
+        this.toDoRemoveBtn.addEventListener('click', () => {
+            this.toDoList = this.toDoList.filter((todo) => todo.container !== 'Closed');
+            this.localStorage.set(this.toDoList);
+            this.render(this.toDoList);
         })
+
+
     }
 
-    addToDo(formData, container) {
+    addToDo(formData) {
         const [title, level, participant] = formData;
-        const newTodoItem = new ToDoItem(title, level, participant, container);
+        const newTodoItem = new ToDoItem(title, level, participant, 'ToDo');
 
         this.toDoList.push(newTodoItem);
         this.localStorage.set(this.toDoList);
         this.render(this.toDoList);
+    }
+
+    handleDrop(ev) {
+        const {item, container} = ev;
+        const index = this.toDoList.findIndex((todo) => todo.id === Number(item));
+        if (index !== -1) {
+            this.toDoList[index].container = container;
+            this.localStorage.set(this.toDoList);
+            this.render(this.toDoList);
+        }
+
     }
 
     render(todoList) {

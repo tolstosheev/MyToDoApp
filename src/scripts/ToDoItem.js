@@ -2,6 +2,7 @@
 export class ToDoItem {
 
     constructor(text, level, participant, container) {
+        this.id = Date.now();
         this.text = text;
         this.level = level;
         this.participant = participant;
