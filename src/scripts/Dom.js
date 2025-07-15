@@ -1,9 +1,7 @@
 
 export class Dom {
 
-    constructor() {
-
-    }
+    constructor() {}
 
     query(selector) {
         return document.querySelector(selector);
@@ -11,5 +9,17 @@ export class Dom {
 
     queryAll(selector) {
         return document.querySelectorAll(selector);
+    }
+
+    queryElement(element, selector) {
+        return element.querySelector(selector);
+    }
+
+    queryElementAll(element, selector) {
+        return element.querySelectorAll(selector);
+    }
+
+    importNode(selector) {
+        return document.importNode(selector.content, true);
     }
 }

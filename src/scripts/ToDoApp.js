@@ -20,21 +20,21 @@ export class ToDoApp {
         this.addFormToDo = new Form('[data-form-todo]', 'form')
 
         this.render(this.toDoList);
-        new DragDrop('[data-todo-item]', '[data-todo-container]', '[data-container]', this.handleDrop.bind(this));
+        new DragDrop(['[data-todo-item]', '[data-todo-container]', '[data-container]'], this.handleDrop.bind(this));
 
         this.bindEvents();
     }
 
     createTodoItemLayout(todo) {
-        const todoElement = document.importNode(this.toDoTemplate.content, true);
+        const todoElement = this.dom.importNode(this.toDoTemplate);
 
-        const todoItem = todoElement.querySelector('[data-todo-item]');
+        const todoItem = this.dom.queryElement(todoElement, '[data-todo-item]');
         todoItem.id = todo.id;
 
-        const todoElementTitle = todoElement.querySelector('[data-todo-title]');
+        const todoElementTitle = this.dom.queryElement(todoElement, '[data-todo-title]');
         todoElementTitle.textContent = todo.text;
 
-        const todoElementLevel = todoElement.querySelector('[data-todo-level]');
+        const todoElementLevel = this.dom.queryElement(todoElement, '[data-todo-level]');
         todoElementLevel.textContent = todo.level;
 
         switch (todo.level) {
@@ -48,11 +48,12 @@ export class ToDoApp {
                 todoElementLevel.parentElement.style.backgroundColor = '#ff9533';
         }
 
-        const todoElementParticipant = todoElement.querySelector('[data-todo-participant]');
+        const todoElementParticipant = this.dom.queryElement(todoElement, '[data-todo-participant]');
         todoElementParticipant.textContent = todo.participant;
 
-        const todoElementData = todoElement.querySelector('[data-todo-data]');
+        const todoElementData = this.dom.queryElement(todoElement, '[data-todo-data]');
         todoElementData.textContent = todo.data;
+
         return todoElement;
     }
 
@@ -74,9 +75,12 @@ export class ToDoApp {
         }, 0);
     }
 
-    clearContainer(container, selector='[data-todo-item]') {
-        let allElements = container.querySelectorAll(selector);
-        allElements.forEach((element) => element.remove());
+    clearContainers(){
+        const containers = this.dom.queryAll('[data-todo-container]');
+        containers.forEach((container) => {
+            let allElements = this.dom.queryElementAll(container, '[data-todo-item');
+            allElements.forEach((element) => {element.remove();});
+        });
     }
 
     bindEvents() {
@@ -112,7 +116,12 @@ export class ToDoApp {
         const {item, container} = ev;
         const index = this.toDoList.findIndex((todo) => todo.id === Number(item));
         if (index !== -1) {
-            this.toDoList[index].container = container;
+            const item = this.toDoList[index];
+            this.toDoList.splice(index, 1);
+
+            item.container = container;
+            this.toDoList.push(item);
+
             this.localStorage.set(this.toDoList);
             this.render(this.toDoList);
         }
@@ -120,10 +129,8 @@ export class ToDoApp {
     }
 
     render(todoList) {
-        this.clearContainer(this.toDoContainerToDo);
-        this.clearContainer(this.toDoContainerClosed);
-        this.clearContainer(this.toDoContainerInProgres);
-        this.clearContainer(this.toDoContainerFrozen);
+        this.clearContainers();
+
         this.getInfo()
         todoList.forEach(todo => {
             const toDoItem = this.createTodoItemLayout(todo);

@@ -1,12 +1,16 @@
+import {Dom} from './Dom';
 
 export class Form {
     constructor(selector, selectorClass) {
-        this.element = document.querySelector(selector);
+        this.dom = new Dom();
+
+        this.element = this.dom.query(selector);
         this.selectorClass = selectorClass;
-        this.titleInput = document.querySelector('[data-form-title-input]');
-        this.participantInput = document.querySelector('[data-form-participant-input]');
-        this.levelSelect = document.querySelector('[data-form-level-select]');
-        this.addToDoBtn = document.querySelector('[data-form-add-button]');
+
+        this.titleInput = this.dom.query('[data-form-title-input]');
+        this.participantInput = this.dom.query('[data-form-participant-input]');
+        this.levelSelect = this.dom.query('[data-form-level-select]');
+        this.addToDoBtn = this.dom.query('[data-form-add-button]');
 
         this.level = '';
         this.title = '';
@@ -19,7 +23,7 @@ export class Form {
     open() {
         this.element.classList.remove(this.selectorClass + '--close');
         this.element.classList.add(this.selectorClass);
-        document.querySelector('body').style.overflow = 'hidden';
+        this.dom.query('body').style.overflow = 'hidden';
     }
 
     get() {

@@ -7,19 +7,19 @@
   row-gap: 8px;
   padding: 16px;
   border-radius: 17px;
-  height: 105px;
+  min-height: 105px;
   background-color: #E0E4EA;
   min-width: 105px;
 
   &__header {
     display: grid;
-    grid-template-columns: repeat(2, min-content);
+    grid-template-columns: 1fr min-content;
     column-gap: 10px;
     align-items: center;
     justify-content: start;
 
     &__title{
-      text-wrap: nowrap;
+      text-wrap: balance;
       @include font-mix.on-rubik-medium-black-font(16px);
     }
 

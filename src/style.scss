@@ -7,7 +7,7 @@
 body {
   padding: 28px 20px;
   font-family: "Rubik", sans-serif;
-
+  user-select: none;
   @include adaptive.tablets{
     padding: 28px 10px;
   }

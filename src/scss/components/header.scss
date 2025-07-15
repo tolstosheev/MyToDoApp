@@ -37,6 +37,8 @@
   }
 
   &__description{
+    display: grid;
+    place-items: center;
     @include container.header-container;
 
     @include adaptive.laptop{

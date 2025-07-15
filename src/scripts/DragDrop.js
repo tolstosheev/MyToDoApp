@@ -1,10 +1,12 @@
 
 export class DragDrop {
-    constructor(itemSelector, containerItemSelector, containerSelector, onDropCallback) {
-        this.item = itemSelector;
-        this.containerItem = containerItemSelector;
-        this.container = containerSelector;
+    constructor(selectors, onDropCallback) {
+        const [item, containerItem, container] = selectors;
+        this.item = item;
+        this.container = container;
+        this.containerItem = containerItem;
         this.dragged = null
+
         this.onDropCallback = onDropCallback;
 
         this.bindEvents();
