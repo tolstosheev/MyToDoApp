@@ -95,9 +95,12 @@ export class ToDoApp {
         });
 
         this.toDoRemoveBtn.addEventListener('click', () => {
-            this.toDoList = this.toDoList.filter((todo) => todo.container !== 'Closed');
-            this.localStorage.set(this.toDoList);
-            this.render(this.toDoList);
+            const isRemove = confirm('Are you sure you want to remove?');
+            if (isRemove) {
+                this.toDoList = this.toDoList.filter((todo) => todo.container !== 'Closed');
+                this.localStorage.set(this.toDoList);
+                this.render(this.toDoList);
+            }
         })
 
 
