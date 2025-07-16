@@ -97,20 +97,20 @@
           </header>
           <section class="form__addtodo__container">
             <div class="form__addtodo__container__title">
-              <span class="form__addtodo__container__title__text">Title</span>
-              <input class="form__addtodo__container__title__input" type="text" name="title" placeholder="Title"  required data-form-title-input/>
+              <label for="title" class="form__addtodo__container__title__text">Title</label>
+              <input id="title" type="text" name="title" placeholder="Title" class="form__addtodo__container__title__input"  required data-form-title-input/>
             </div>
             <div class="form__addtodo__container__level">
-              <span class="form__addtodo__container__title__text">Level</span>
-              <select class="form__addtodo__container__level__select" name="Level" data-form-level-select>
+              <label for="select" class="form__addtodo__container__title__text">Level</label>
+              <select id="select" class="form__addtodo__container__level__select" name="Level" data-form-level-select>
                 <option class="form__addtodo__container__level__select__option" value="Low">Low</option>
                 <option class="form__addtodo__container__level__select__option" value="Medium">Medium</option>
                 <option class="form__addtodo__container__level__select__option" value="High">High</option>
               </select>
             </div>
             <div class="form__addtodo__container__participant">
-              <span class="form__addtodo__container__participant__text">Participant</span>
-              <input class="form__addtodo__container__participant__input" type="text" name="participant" placeholder="Participant" required data-form-participant-input/>
+              <label for="participant" class="form__addtodo__container__participant__text">Participant</label>
+              <input id="participant" class="form__addtodo__container__participant__input" type="text" name="participant" placeholder="Participant" required data-form-participant-input/>
             </div>
             <div class="form__addtodo__container__button">
               <button class="form__addtodo__container__button__item" data-form-add-button>Add ToDo</button>
