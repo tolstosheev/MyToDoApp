@@ -2,33 +2,25 @@
 @use '../mixins/input' as input;
 @use '../mixins/adaptive' as adaptive;
 
-:root {
-  --visible: grid;
-}
-
-.form {
-  display: var(--visible);
-  place-items: center;
+.dialog {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 1000;
-  background-color: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(5px);
+  padding: 0;
+  border: none;
+  background: transparent;
 
-  &--close{
-    --visible: none;
+  &::backdrop {
+    background: rgba(0, 0, 0, 0.5);
   }
 
   &__addtodo {
-    display: var(--visible);
+    display: grid;
     grid-template-columns: minmax(320px, 500px);
     grid-template-rows: min-content 1fr;
     gap: 50px;
     height: 700px;
-    z-index: 2222;
     background-color: #f6f6f6;
     border-radius: 20px;
     padding: 30px;

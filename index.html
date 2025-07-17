@@ -90,33 +90,33 @@
           </div>
         </div>
       </template>
-      <div class="form--close" data-form-todo>
-        <form class="form__addtodo">
-          <header class="form__addtodo__header">
-            <h4 class="form__addtodo__header__title">Add your task</h4>
+      <dialog class="dialog" data-todo-dialog>
+        <form class="dialog__addtodo" data-todo-form>
+          <header class="dialog__addtodo__header">
+            <h4 class="dialog__addtodo__header__title">Add your task</h4>
           </header>
-          <section class="form__addtodo__container">
-            <div class="form__addtodo__container__title">
-              <label for="title" class="form__addtodo__container__title__text">Title</label>
-              <input id="title" type="text" name="title" placeholder="Title" class="form__addtodo__container__title__input"  required data-form-title-input/>
+          <section class="dialog__addtodo__container">
+            <div class="dialog__addtodo__container__title">
+              <label for="title" class="dialog__addtodo__container__title__text">Title</label>
+              <input id="title" type="text" name="title" placeholder="Title" class="dialog__addtodo__container__title__input"  required/>
             </div>
-            <div class="form__addtodo__container__level">
-              <label for="select" class="form__addtodo__container__title__text">Level</label>
-              <select id="select" class="form__addtodo__container__level__select" name="Level" data-form-level-select>
-                <option class="form__addtodo__container__level__select__option" value="Low">Low</option>
-                <option class="form__addtodo__container__level__select__option" value="Medium">Medium</option>
-                <option class="form__addtodo__container__level__select__option" value="High">High</option>
+            <div class="dialog__addtodo__container__level">
+              <label for="select" class="dialog__addtodo__container__title__text">Level</label>
+              <select id="select" class="dialog__addtodo__container__level__select" name="level">
+                <option class="dialog__addtodo__container__level__select__option" value="Low">Low</option>
+                <option class="dialog__addtodo__container__level__select__option" value="Medium">Medium</option>
+                <option class="dialog__addtodo__container__level__select__option" value="High">High</option>
               </select>
             </div>
-            <div class="form__addtodo__container__participant">
-              <label for="participant" class="form__addtodo__container__participant__text">Participant</label>
-              <input id="participant" class="form__addtodo__container__participant__input" type="text" name="participant" placeholder="Participant" required data-form-participant-input/>
+            <div class="dialog__addtodo__container__participant">
+              <label for="participant" class="dialog__addtodo__container__participant__text">Participant</label>
+              <input id="participant" class="dialog__addtodo__container__participant__input" type="text" name="participant" placeholder="Participant" required/>
             </div>
-            <div class="form__addtodo__container__button">
-              <button class="form__addtodo__container__button__item" data-form-add-button>Add ToDo</button>
+            <div class="dialog__addtodo__container__button">
+              <button class="dialog__addtodo__container__button__item" type="submit">Add ToDo</button>
             </div>
           </section>
         </form>
-      </div>
+      </dialog>
   </body>
 </html>

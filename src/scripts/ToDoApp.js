@@ -1,7 +1,7 @@
 import {Dom} from './Dom.js';
 import {Storage} from './Storage';
 import {ToDoItem} from './ToDoItem';
-import {Form} from './Form';
+import {Dialog} from './Dialog.js';
 import {DragDrop} from './DragDrop';
 
 export class ToDoApp {
@@ -17,7 +17,7 @@ export class ToDoApp {
         this.toDoContainerClosed = this.dom.query('#Closed');
         this.toDoAddBtn = this.dom.query('[data-todo-add-btn]');
         this.toDoRemoveBtn = this.dom.query('[data-todo-remove-btn]');
-        this.addFormToDo = new Form('[data-form-todo]', 'form')
+        this.dialogToDo = new Dialog(['[data-todo-dialog]', '[data-todo-form]'])
 
         this.render(this.toDoList);
         new DragDrop(['[data-todo-item]', '[data-todo-container]', '[data-container]'], this.handleDrop.bind(this));
@@ -85,13 +85,13 @@ export class ToDoApp {
 
     bindEvents() {
         this.toDoAddBtn.addEventListener('click', () => {
-            this.addFormToDo.open();
-            this.addFormToDo.setOnSubmit((formData) => {
+            this.dialogToDo.setOnSubmit((formData) => {
                 if (formData) {
                     this.addToDo(formData);
-                    this.addFormToDo.setOnSubmit(null);
+                    this.dialogToDo.setOnSubmit(null);
                 }
             })
+            this.dialogToDo.openDialog();
         });
 
         this.toDoRemoveBtn.addEventListener('click', () => {
@@ -107,8 +107,7 @@ export class ToDoApp {
     }
 
     addToDo(formData) {
-        const [title, level, participant] = formData;
-        const newTodoItem = new ToDoItem(title, level, participant, 'ToDo');
+        const newTodoItem = new ToDoItem(formData.text, formData.level, formData.participant, 'ToDo');
 
         this.toDoList.push(newTodoItem);
         this.localStorage.set(this.toDoList);
