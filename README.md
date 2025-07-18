@@ -74,22 +74,25 @@ npm run dev
 ## 📂 Структура проекта
 src/
 ├── scripts/
-│   ├── Dialog.js       // Управление диалоговым окном
-│   ├── Dom.js          // Вспомогательные методы для работы с DOM
-│   ├── DragDrop.js     // Логика перетаскивания элементов
-│   ├── Storage.js      // Работа с localStorage
-│   ├── ToDoApp.js      // Основная логика приложения
-│   └── ToDoItem.js     // Модель задачи
+│ ├── Dialog.js // Управление диалоговым окном
+│ ├── Dom.js // Вспомогательные методы для работы с DOM
+│ ├── DragDrop.js // Логика перетаскивания элементов
+│ ├── Storage.js // Работа с localStorage
+│ ├── ToDoApp.js // Основная логика приложения
+│ └── ToDoItem.js // Модель задачи
 ├── scss/
-│   ├── components/     // Стили компонентов
-│   ├── mixins/         // SCSS-миксины
-│   │   ├── _adaptive.scss    // Адаптивные точки
-│   │   ├── _fonts.scss       // Миксины для типографики
-│   │   ├── _header-container.scss // Стили контейнера
-│   │   └── _input.scss        // Стилизация инпутов
-│   ├── maps/           // SCSS-карты переменных
-│   │   └── fonts_map.scss    // Карта шрифтов
-│   ├── reset.scss      // Сброс стилей
-│   └── style.scss      // Главный файл стилей
-├── index.html          // Основная разметка
-└── main.js             // Точка вход
+│ ├── components/ // Стили компонентов
+│ │ ├── dialog.scss
+│ │ ├── header.scss
+│ │ └── main.scss
+│ ├── mixins/ // SCSS-миксины
+│ │ ├── _adaptive.scss // Адаптивные точки
+│ │ ├── _fonts.scss // Миксины для типографики
+│ │ ├── _header-container.scss // Стили контейнера
+│ │ └── _input.scss // Стилизация инпутов
+│ ├── maps/ // SCSS-карты переменных
+│ │ └── fonts_map.scss // Карта шрифтов
+│ ├── reset.scss // Сброс стилей
+│ └── style.scss // Главный файл стилей
+├── index.html // Основная разметка
+└── main.js // Точка входа
