@@ -1,11 +1,12 @@
 # ToDo App - Продвинутый менеджер задач
 
 *Интерфейс приложения - 4 колонки с задачами*
-<img width="1280" height="659" alt="image" src="https://github.com/user-attachments/assets/b378bee5-a0ac-480d-9ebb-893d0dd1ac83" />
-*Форма для добавления задачи*
-<img width="1280" height="656" alt="image" src="https://github.com/user-attachments/assets/b8a4bee9-1a2d-43e9-a703-6359086538ed" />
+<img width="1917" height="986" alt="image" src="https://github.com/user-attachments/assets/4eeed614-893f-4054-aad4-01a5c245f57b" />
 
-Профессиональное приложение для управления задачами с интуитивным drag&drop интерфейсом, адаптивным дизайном и автоматическим сохранением данных в браузере.
+*Форма для добавления задачи*
+<img width="1919" height="983" alt="image" src="https://github.com/user-attachments/assets/a9e08591-9887-4e6a-8086-f7d50f92283c" />
+
+ Web-приложение для управления задачами с интуитивным drag&drop интерфейсом, адаптивным дизайном и автоматическим сохранением данных в браузере.
 
 ## ✨ Основные возможности
 
