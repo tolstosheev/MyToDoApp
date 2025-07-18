@@ -36,9 +36,8 @@ export class Dialog {
                     participant: dialogToDoData.participant,
                 });
             }
+            this.formElement.reset();
             this.closeDialog()
         });
-
-
     }
 }
