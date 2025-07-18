@@ -21,7 +21,7 @@
     grid-template-rows: min-content 1fr;
     gap: 50px;
     height: 700px;
-    background-color: #f6f6f6;
+    background-color: var(--background-color-form);
     border-radius: 20px;
     padding: 30px;
 
@@ -75,7 +75,6 @@
             outline: none;
           }
 
-
           &::-ms-expand {
             display: none;
           }
@@ -106,7 +105,7 @@
 
         &__item {
           @include font-mix.on-rubik-regular-white-font(20px);
-          background-color: #67cb65;
+          background-color: var(--green-color);
           border-radius: 20px;
           text-transform: uppercase;
           width: 100%;

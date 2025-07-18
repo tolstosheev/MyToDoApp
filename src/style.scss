@@ -4,10 +4,20 @@
 @use "scss/components/dialog";
 @use 'scss/mixins/adaptive' as adaptive;
 
+:root {
+  --opacity: 0;
+  --container-color: #f6f6f6;
+  --red-color: #e74444;
+  --green-color:#67cb65;
+  --item-color: #E0E4EA;
+  --background-color-form: #f6f6f6;
+}
+
 body {
   padding: 28px 20px;
   font-family: "Rubik", sans-serif;
   user-select: none;
+
   @include adaptive.tablets{
     padding: 28px 10px;
   }

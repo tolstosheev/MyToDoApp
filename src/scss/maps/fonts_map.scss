@@ -1,26 +1,30 @@
 @use "sass:map";
 
+$black: #000000;
+$white: #ffffff;
+$grey: #6c6c6c;
+
 $fonts: (
   "Rubik-medium-black": (
-    "color": #000000,
+    "color": $black,
     "font-weight": 500,
     "line-height": 20px,
     "letter-spacing": 0,
   ),
   "Rubik-regular-black":(
-     "color": #000000,
+     "color": $black,
      "font-weight": 400,
      "line-height": 20px,
      "letter-spacing": 0,
   ),
   "Rubik-regular-white":(
-     "color": #ffffff,
+     "color": $white,
      "font-weight": 400,
      "line-height": 20px,
      "letter-spacing": 0,
   ),
   "Rubik-medium-grey": (
-      "color": #6c6c6c,
+      "color": $grey,
       "font-weight": 500,
       "line-height": 20px,
       "letter-spacing": 0,

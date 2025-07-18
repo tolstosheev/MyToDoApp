@@ -2,8 +2,9 @@
 
 @mixin header-container {
   padding: 22px;
-  background-color: #f6f6f6;
+  background-color: var(--container-color);
   border-radius: 17px;
+
   @include adaptive.tablets{
     padding: 10px;
   }

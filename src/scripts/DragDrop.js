@@ -2,11 +2,12 @@
 export class DragDrop {
     constructor(selectors, onDropCallback) {
         const [item, containerItem, container] = selectors;
+
         this.item = item;
         this.container = container;
         this.containerItem = containerItem;
-        this.dragged = null
 
+        this.dragged = null
         this.onDropCallback = onDropCallback;
 
         this.bindEvents();

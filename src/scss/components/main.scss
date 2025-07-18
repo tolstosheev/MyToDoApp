@@ -3,10 +3,6 @@
 @use '../mixins/header-container' as container;
 @use 'todoshka';
 
-:root {
-  --opacity: 0;
-}
-
 .main {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -58,20 +54,20 @@
         justify-content: end;
         align-items: center;
 
-
         button {
           opacity: var(--opacity);
           transition: opacity .25s ease;
           width: 24px;
           height: 24px;
-          background-color: #67cb65;
+          background-color: var(--green-color);
           border-radius: 15px;
           color: #ffffff;
           text-align: center;
         }
+
         &--remove{
           button {
-            background-color: #e74444;
+            background-color: var(--red-color);
           }
         }
       }

@@ -6,7 +6,6 @@
   @if map.has-key(fonts.$fonts, $font-style) {
     $style-properties: map.get(fonts.$fonts, $font-style);
 
-
     color: map.get($style-properties, "color");
     font-weight: map.get($style-properties, "font-weight");
     line-height: map.get($style-properties, "line-height");

@@ -9,7 +9,9 @@ export class ToDoApp {
     constructor() {
         this.localStorage = new Storage('todos');
         this.dom = new Dom;
+
         this.toDoList = this.localStorage.get() || [];
+
         this.toDoTemplate = this.dom.query('[data-todo-template]');
         this.toDoContainerToDo = this.dom.query('#ToDo');
         this.toDoContainerInProgres = this.dom.query('#InProgress');
@@ -20,6 +22,7 @@ export class ToDoApp {
         this.dialogToDo = new Dialog(['[data-todo-dialog]', '[data-todo-form]'])
 
         this.render(this.toDoList);
+
         new DragDrop(['[data-todo-item]', '[data-todo-container]', '[data-container]'], this.handleDrop.bind(this));
 
         this.bindEvents();
@@ -77,6 +80,7 @@ export class ToDoApp {
 
     clearContainers(){
         const containers = this.dom.queryAll('[data-todo-container]');
+
         containers.forEach((container) => {
             let allElements = this.dom.queryElementAll(container, '[data-todo-item');
             allElements.forEach((element) => {element.remove();});
@@ -102,8 +106,6 @@ export class ToDoApp {
                 this.render(this.toDoList);
             }
         })
-
-
     }
 
     addToDo(formData) {
@@ -117,6 +119,7 @@ export class ToDoApp {
     handleDrop(ev) {
         const {item, container} = ev;
         const index = this.toDoList.findIndex((todo) => todo.id === Number(item));
+
         if (index !== -1) {
             const item = this.toDoList[index];
             this.toDoList.splice(index, 1);
